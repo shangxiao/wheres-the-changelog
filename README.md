@@ -2,6 +2,8 @@
 
 Find the changelog for a package using the online form: https://shangxiao.github.io/wheres-the-changelog/
 
+<p align="center"><img src="./wheres-the-changelog.png"  alt="where's the cheese?" height="400" /></p>
+
 ### Why does this exist when repositories link to the changelog?
 
  - Not all package authors supply the changelog link
