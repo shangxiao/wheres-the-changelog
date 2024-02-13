@@ -12,7 +12,8 @@ Add this to your shell rc:
 
 ```sh
 function changelog() {
-    if [ $# -lt 2 ] ; then
+    if [ $# -lt 2 ]
+    then
         echo 'Usage: changelog <repository> <package>'
     else
         for arg in "${@:2}"
