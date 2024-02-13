@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Where's the Changelog?</title>
+    <style></style>
+    <script>
+      function handleSubmit(e) {
+        e.target.action = e.target.action + `${e.target.repository.value}/${e.target.package.value}`;
+      }
+      function handleSubmitSubmit(e) {
+        e.target.filename.value = `${e.target.filename.value}.html`;
+        e.target.value.value = `<meta http-equiv="refresh" content="0;URL='${e.target.value.value}'" />`;
+        e.target.action = `https://github.com/shangxiao/wheres-the-changelog/new/main/${e.target.repository.value}`;
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Where's the Changelog?</h1>
+    <form onsubmit="handleSubmit(event)" method="GET">
+      <select name="repository" required>
+        <option>pypi</option>
+      </select>
+      <input type="text" name="package" required />
+      <button>Where is it?</button>
+    </form>
+    <h2>Got a 404?</h2>
+    <p>Fork &amp; submit a PR with this form (requires GitHub login)</p>
+    <form onsubmit="handleSubmitSubmit(event)" method="GET">
+      <select name="repository" required>
+        <option>pypi</option>
+      </select>
+      <input type="text" name="filename" placeholder="package-name" required />
+      <input type="text" name="value" placeholder="url" required />
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
