@@ -17,7 +17,7 @@ function changelog() {
     else
         for arg in "${@:2}"
         do
-            open https://shangxiao.github.io/wheres-the-changelog/$1/$arg.html
+            open https://shangxiao.github.io/wheres-the-changelog/$1/$arg
         done
     fi
 }
