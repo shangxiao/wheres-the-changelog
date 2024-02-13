@@ -12,12 +12,19 @@ Add this to your shell rc:
 
 ```sh
 function changelog() {
-    python -m webbrowser https://shangxiao.github.io/wheres-the-changelog/$1/$2
+    if [ $# -lt 2 ] ; then
+        echo 'Usage: changelog <repository> <package>'
+    else
+        for arg in "${@:2}"
+        do
+            open https://shangxiao.github.io/wheres-the-changelog/$1/$arg.html
+        done
+    fi
 }
 ```
 
-Then open a changelog:
+Then open changelogs for multiple packages at a time:
 
 ```sh
-changelog pypi django
+changelog pypi django pytest pytest-django
 ```
