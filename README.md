@@ -20,7 +20,17 @@ function changelog() {
     else
         for arg in "${@:2}"
         do
-            python -m webbrowser https://shangxiao.github.io/wheres-the-changelog/$1/$arg
+            url=https://shangxiao.github.io/wheres-the-changelog/$1/$arg
+            response=$(curl --write-out '%{http_code}' --head --silent --output /dev/null $url)
+            if [ $response -eq '404' ] ; then
+                # Open a PR instead if the page doesn't exist yet
+                filename=$arg.html
+                # encoded version of <meta http-equiv="refresh" content="0;URL='???'" />
+                value="%3Cmeta+http-equiv%3D%22refresh%22+content%3D%220%3BURL%3D%27%3F%3F%3F%27%22+%2F%3E"
+                url="https://github.com/shangxiao/wheres-the-changelog/new/main/$1?filename=$filename&value=$value"
+            fi
+            # or simpley `open $url` on a Mac
+            python -m webbrowser $url
         done
     fi
 }
