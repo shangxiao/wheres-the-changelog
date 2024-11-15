@@ -7,7 +7,9 @@
     <style></style>
     <script>
       function handleSubmit(e) {
-        e.target.action = e.target.action + `${e.target.repository.value}/${e.target.package.value}`;
+        e.target.action =
+          location.origin +
+          `/wheres-the-changelog/${e.target.repository.value}/${e.target.package.value}`;
       }
       function handleSubmitSubmit(e) {
         e.target.filename.value = `${e.target.filename.value}.html`;
